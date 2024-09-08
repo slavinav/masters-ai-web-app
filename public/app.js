@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     welcomeMessageElement.style.display = "none";
   });
 
-  // requestNewImage();
+  requestNewImage();
 });
 
 function previewImage() {

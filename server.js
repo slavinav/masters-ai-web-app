@@ -147,6 +147,10 @@ app.post("/chatbot", async (req, res) => {
     let sentences = chatbotResponse.split(/(?<=[.!?])\s+/);
     // Rejoin the first two sentences
     chatbotResponse = sentences.slice(0, 2).join(" ");
+    if (!chatbotResponse.trim().endsWith("?")) {
+      // Add a simple default question if there isn't one
+      chatbotResponse += " Какво друго виждаш на картинката?";
+    }
     res.json({ response: chatbotResponse });
   } catch (error) {
     console.error("Error fetching chatbot response:", error.message);

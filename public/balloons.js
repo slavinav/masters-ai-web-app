@@ -47,17 +47,22 @@ function animateBalloon(balloon) {
     ease: "power1.inOut",
     onComplete: () => {
       balloon.remove(); // Remove the balloon element at the end of the animation
-      startBalloonAnimation();
+      startBalloonAnimation(); // Start a new balloon animation
     },
   });
 }
 
 function resetTimeline() {
   if (timeline) {
-    timeline.totalProgress(1);
+    timeline.clear(); // Clear the timeline to stop all animations
   }
+
   const balloons = document.querySelectorAll(".balloon");
-  balloons.forEach((balloon) => balloon.remove()); // Remove all existing balloons
+  balloons.forEach((balloon) => {
+    gsap.killTweensOf(balloon); // Stop any animations on the balloon
+    balloon.remove(); // Remove the balloon from the DOM
+  });
+
   startBalloonAnimation(); // Restart animation
 }
 

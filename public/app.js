@@ -20,12 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Set up event listener for the start button
   startButton.addEventListener("click", () => {
     speakText("Какво виждаш на картинката?");
+    displayTranscription("bot", "Какво виждаш на картинката?");
     newGameButton.style.opacity = 1;
     startButton.style.display = "none";
     welcomeMessageElement.style.display = "none";
   });
 
-  requestNewImage();
+  // requestNewImage();
 });
 
 function previewImage() {
@@ -172,8 +173,8 @@ function startSpeechRecognition() {
     }
 
     // Display interim transcript
-    if (interimTranscript) {
-      displayTranscription("user", interimTranscript);
+    if (finalTranscript) {
+      displayTranscription("user", finalTranscript);
     }
 
     // Process final transcript once complete
@@ -231,9 +232,9 @@ function displayTranscription(speaker, text) {
   transcriptionElement.innerHTML = "";
 
   const speakerLabel = speaker === "user" ? "Потребител:" : "Чатбот:";
-  const newLine = document.createElement("p");
-  newLine.textContent = `${speakerLabel} ${text}`;
-  transcriptionElement.appendChild(newLine);
+  // const newLine = document.createElement("p");
+  transcriptionElement.innerHTML = `${speakerLabel} ${text}`;
+  // transcriptionElement.appendChild(newLine);
 }
 
 async function processUserInput(transcript) {

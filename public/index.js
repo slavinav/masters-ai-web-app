@@ -1,13 +1,3 @@
-const audio = document.getElementById("background-music");
-
-// Function to play music
-function playMusic() {
-  audio.play();
-}
-
-// Event listener to play music on user click
-window.addEventListener("click", playMusic);
-
 function adjustFormForOrientation() {
   const form = document.getElementById("funForm");
   const h1 = document.getElementById("headline");
